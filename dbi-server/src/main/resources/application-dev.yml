@@ -1,0 +1,8 @@
+dbi:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: database_inspection
+    username: root
+    password: lsd147258

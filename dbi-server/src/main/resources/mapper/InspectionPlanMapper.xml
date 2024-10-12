@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cmcc.dbi.mapper.InspectionPlanMapper">
+
+    <update id="updateInspectionPlan" parameterType="InspectionPlan">
+        update inspection_plan
+        <set>
+            <if test="planName != null"> plan_name = #{planName},</if>
+            <if test="createPeople != null"> create_people = #{createPeople},</if>
+            <if test="startTime != null"> start_time = #{startTime},</if>
+            <if test="endTime != null"> end_time = #{endTime},</if>
+            <if test="execType != null"> exec_type = {execType},</if>
+            <if test="inspectionType != null"> inspection_type = #{inspectionType},</if>
+            <if test="inspectionStatus != null"> inspection_status = #{inspectionStatus},</if>
+            <if test="modelId != null"> model_id = #{modelId},</if>
+            <if test="dbId != null"> db_id = #{dbId},</if>
+            <if test="inspectionItemNum != null"> inspection_item_num = #{inspectionItemNum},</if>
+            <if test="errorItemNum != null"> error_item_num = #{errorItemNum},</if>
+            <if test="reportPath != null"> report_path = #{reportPath}</if>
+        </set>
+        where plan_id = #{planId}
+    </update>
+</mapper>

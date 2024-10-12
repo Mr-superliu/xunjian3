@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cmcc.dbi.mapper.InspectionScriptMapper">
+
+    <select id="pageQuery" resultType="cmcc.dbi.entity.InspectionScript">
+        select * from inspection_script
+        <where>
+            <if test="scriptName != null and scriptName != ''">
+                and script_name like concat('%',#{scriptName},'%')
+            </if>
+            <if test="scriptType != null and scriptType != ''">
+                and script_type = #{scriptType}
+            </if>
+            <if test="techStack != null and techStack != ''">
+                and tech_stack = #{techStack}
+            </if>
+            <if test="categoryName != null and categoryName != ''">
+                and category_name = #{categoryName}
+            </if>
+            <if test="inspectionCategory != null and inspectionCategory != ''">
+                and inspection_category = #{inspectionCategory}
+            </if>
+            <if test="dbVersion != null and dbVersion != ''">
+                and db_version = #{dbVersion}
+            </if>
+            <if test="osType != null and osType != ''">
+                and os_type = #{osType}
+            </if>
+        </where>
+        order by script_id desc
+    </select>
+
+    <update id="updateInspectionScript" parameterType="InspectionScript">
+    update inspection_script
+    <set>
+        <if test="scriptName != null">script_name = #{scriptName},</if>
+        <if test="scriptType != null">script_type = #{scriptType},</if>
+        <if test="techStack != null">tech_stack = #{techStack},</if>
+        <if test="categoryName != null">category_name = #{categoryName},</if>
+        <if test="inspectionCategory != null">inspection_category = #{inspectionCategory},</if>
+        <if test="dbVersion != null">db_version = #{dbVersion},</if>
+        <if test="osType != null">os_type = #{osType},</if>
+        <if test="description != null">description = #{description},</if>
+        <if test="scriptContent != null">script_content = #{scriptContent},</if>
+        <if test="input!= null">input = #{input},</if>
+        <if test="output!= null">output = #{output},</if>
+    </set>
+        where script_id = #{scriptId}
+    </update>
+</mapper>
